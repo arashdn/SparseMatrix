@@ -1,11 +1,11 @@
-#include "Sparce.h"
+#include "Sparse.h"
 #include <iomanip> // setw
 #include <stdexcept>
 using namespace std;
 
 //Comments are in Persian
 
-Sparce::Sparce(int ** a , int r, int c)
+Sparse::Sparse(int ** a , int r, int c)
 {
 	int term = 0;
 	for (int i = 0; i < r; i++)
@@ -29,7 +29,7 @@ Sparce::Sparce(int ** a , int r, int c)
 
 }
 
-Sparce::Sparce( Sparce & a )
+Sparse::Sparse( Sparse & a )
 {
 	cells = new Cell[a.value];
 	setRow(a.getRow());
@@ -44,7 +44,7 @@ Sparce::Sparce( Sparce & a )
 
 }
 
-Sparce::Sparce (int r , int c , int term)
+Sparse::Sparse (int r , int c , int term)
 {
 	cells = new Cell[term];
 	setRow(r);
@@ -52,60 +52,60 @@ Sparce::Sparce (int r , int c , int term)
 	setValue(term);
 }
 
-Sparce::~Sparce(void)
+Sparse::~Sparse(void)
 {
 	//delete[] cells;
 }
 
 
-int Sparce::getRow()
+int Sparse::getRow()
 {
 	return row;
 }
 
 
-int Sparce::getCol()
+int Sparse::getCol()
 {
 	return col;
 }
 
-int Sparce::getValue()
+int Sparse::getValue()
 {
 	return value;
 }
 
 
 
-void Sparce::setRow(int r)
+void Sparse::setRow(int r)
 {
 	row = r;
 }
 
-void Sparce::setCol(int c)
+void Sparse::setCol(int c)
 {
 	col = c;
 }
 
-void Sparce::setValue(int v)
+void Sparse::setValue(int v)
 {
 	value = v;
 }
 
 
-int Sparce::getRowX(int i)
+int Sparse::getRowX(int i)
 {
 	return cells[i].getRow();
 }
-int Sparce::getRowY(int i)
+int Sparse::getRowY(int i)
 {
 	return cells[i].getCol();
 }
-int Sparce::getRowValue(int i)
+int Sparse::getRowValue(int i)
 {
 	return cells[i].getValue();
 }
 
-Sparce Sparce::operator+ (Sparce sp2)
+Sparse Sparse::operator+ (Sparse sp2)
 {
 	if(getRow() != sp2.getRow() || getCol() != sp2.getCol())
 		throw std::exception("For adding two array most have same rows and coloumns");
@@ -159,7 +159,7 @@ Sparce Sparce::operator+ (Sparce sp2)
 	}
 
 	satr3--;
-	Sparce res(getRow(),getCol(),satr3);
+	Sparse res(getRow(),getCol(),satr3);
 
 	satr1 = 0;
 	satr2 = 0;
@@ -219,7 +219,7 @@ Sparce Sparce::operator+ (Sparce sp2)
 
 	return res;
 }
-Sparce Sparce::operator* (Sparce sp2)
+Sparse Sparse::operator* (Sparse sp2)
 {
 	if( getRow() != sp2.getCol())
 		throw std::exception("For multiply two array most have same rows and coloumns");
@@ -262,7 +262,7 @@ Sparce Sparce::operator* (Sparce sp2)
 		}
 	}//for i
 
-	Sparce res(getRow(),sp2.getCol(),count);
+	Sparse res(getRow(),sp2.getCol(),count);
 
 	//baad zarb
 	count = 0;
@@ -306,7 +306,7 @@ Sparce Sparce::operator* (Sparce sp2)
 	
 }
 
-int Sparce::findInRows(int i)
+int Sparse::findInRows(int i)
 {
 	for (int j = 0; j < getValue(); j++)
 		if(getRowX(j) == i)
@@ -314,7 +314,7 @@ int Sparce::findInRows(int i)
 
 	return -1;
 }
-int Sparce::findInCols(int soton,int satr)
+int Sparse::findInCols(int soton,int satr)
 {
 	/*
 	alan aval check mikonim ke satr i om dar matris a hast ya na(ye row dare ye col=satr ba n ke jash dar araye ast)
@@ -330,9 +330,9 @@ int Sparce::findInCols(int soton,int satr)
 	return -1;
 }
 
-Sparce  Sparce::transpose()
+Sparse  Sparse::transpose()
 {
-	Sparce b(this->getRow(),this->getCol(),this->getValue());
+	Sparse b(this->getRow(),this->getCol(),this->getValue());
 	int currentb = -1;
 
 	for (int i = 0; i < this->getCol(); i++)
@@ -343,7 +343,7 @@ Sparce  Sparce::transpose()
 	return b;
 }
 
-Sparce Sparce::quickTranspose()
+Sparse Sparse::quickTranspose()
 	{
 		int * rowSize = new int[getCol()];
 		int * rowStart = new int[getCol()];
@@ -362,7 +362,7 @@ Sparce Sparce::quickTranspose()
 			//masalan : 2 --->moghee'yat satr1 ke 4 hast ba farz inke 3 ta ham 1 dashte bashim 2 az 7 bayad shoroo beshe
 
 
-		Sparce b(getCol(),getRow(),getValue());//matris javab
+		Sparse b(getCol(),getRow(),getValue());//matris javab
 
 		int j;//baraye taskkhis moghee'yat dar matis b(javab)
 
@@ -378,7 +378,7 @@ Sparce Sparce::quickTranspose()
 		return b;
 	}
 
-std::ostream & operator <<(std::ostream& os, Sparce & sprc)
+std::ostream & operator <<(std::ostream& os, Sparse & sprc)
 {
 	const char khate_bala=(char)196;
 	const char t = (char)194; // esm be khatere ghiyafe shabih be T

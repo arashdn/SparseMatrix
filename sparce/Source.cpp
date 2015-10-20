@@ -1,4 +1,4 @@
-#include "Sparce.h"
+#include "Sparse.h"
 #include <iostream>
 using namespace std;
 
@@ -21,17 +21,17 @@ int main()
 	a[1][3] = 1;
 
 
-	Sparce mySparce(a,row,col);
-	Sparce mySparce2(a,row,col);
+	Sparse mySparse(a,row,col);
+	Sparse mySparse2(a,row,col);
 	
-	//Sparce b = mySparce + mySparce2;
-	cout << "Sparce1: \n" << mySparce;
-	cout << "\nSparce2: \n" << mySparce2 << endl<<"Sparce 1+2:\n";
-	cout << mySparce + mySparce2 ;
-	cout <<"\nTranspose:\n" << mySparce.transpose();
-	cout <<"\nQuick Transpose:\n" << mySparce.quickTranspose();
-	cout<<"\nSparce 1*2:\n";
-	cout << mySparce * mySparce2 ;
+	//Sparse b = mySparse + mySparse2;
+	cout << "Sparse1: \n" << mySparse;
+	cout << "\nSparse2: \n" << mySparse2 << endl<<"Sparse 1+2:\n";
+	cout << mySparse + mySparse2 ;
+	cout <<"\nTranspose:\n" << mySparse.transpose();
+	cout <<"\nQuick Transpose:\n" << mySparse.quickTranspose();
+	cout<<"\nSparse 1*2:\n";
+	cout << mySparse * mySparse2 ;
 	cin.ignore();
 	cin.get();
 	return 0;

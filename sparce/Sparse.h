@@ -1,10 +1,10 @@
 #pragma once
 #include <iostream>
 #include "Cell.h"
-class Sparce
+class Sparse
 {
 
-	friend std::ostream & operator <<(std::ostream& os, Sparce &sprc);
+	friend std::ostream & operator <<(std::ostream& os, Sparse &sprc);
 
 	Cell * cells;
 	int row;
@@ -13,12 +13,12 @@ class Sparce
 
 
 public:
-	Sparce(int ** a , int r, int c);
-	Sparce(Sparce &  a );
+	Sparse(int ** a , int r, int c);
+	Sparse(Sparse &  a );
 
-	Sparce (int r , int c , int val);
+	Sparse (int r , int c , int val);
 
-	~Sparce(void);
+	~Sparse(void);
 
 	int getRow();
 	int getCol();
@@ -33,13 +33,13 @@ public:
 	int getRowValue(int i);
 
 
-	Sparce operator+ (Sparce sp2);
-	Sparce operator* (Sparce sp2);
+	Sparse operator+ (Sparse sp2);
+	Sparse operator* (Sparse sp2);
 	int findInRows(int i);
 	int findInCols(int i,int loc );
 
-	Sparce transpose();
+	Sparse transpose();
 
-	Sparce quickTranspose();
+	Sparse quickTranspose();
 };
 

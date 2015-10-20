@@ -13,6 +13,7 @@
   <PropertyGroup Label="Globals">
     <ProjectGuid>{43EC6487-A0BD-4E9B-9FE8-45AC36A94F8D}</ProjectGuid>
     <RootNamespace>sparce</RootNamespace>
+    <ProjectName>sparse</ProjectName>
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="Configuration">
@@ -66,11 +67,11 @@
   <ItemGroup>
     <ClCompile Include="Cell.cpp" />
     <ClCompile Include="Source.cpp" />
-    <ClCompile Include="Sparce.cpp" />
+    <ClCompile Include="Sparse.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Cell.h" />
-    <ClInclude Include="Sparce.h" />
+    <ClInclude Include="Sparse.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
