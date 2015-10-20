@@ -3,7 +3,7 @@
 #include <stdexcept>
 using namespace std;
 
-
+//Comments are in Persian
 
 Sparce::Sparce(int ** a , int r, int c)
 {
